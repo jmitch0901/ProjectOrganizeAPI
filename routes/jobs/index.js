@@ -7,20 +7,25 @@ jobsRouter.get('/',function(req,res){
    res.json([
        {
            id_job:1,
+           fk_id_company:3,
            title:"gyno"
        },
        {
            id_job:2,
+           fk_id_company:3,
            title:"bacinator"
            
        },
        {
            id_job:3,
+           fk_id_company:3,
            title:"playa"
        }
        ]); 
 });
 
+
+//Get a SPECIFIC job. Add a query parameter SHOWALL?
 jobsRouter.get("/:id_job",function(req,res){
     
     res.json({
@@ -33,13 +38,11 @@ jobsRouter.get("/:id_job",function(req,res){
         },
         contacts:[
             {
-                fk_id_job:2,
                 phone:"1231231234",
                 email:"bacon@weiners.com"
                 
             },
             {
-                fk_id_job:3,
                 phone:"4564564567",
                 email:"weiner@bacon.com"
                 

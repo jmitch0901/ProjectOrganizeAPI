@@ -20,6 +20,17 @@ mongoose.connect('mongodb://localhost/project_organize');
 // parse application/x-www-form-urlencoded 
 app.use(bodyParser.urlencoded({extended:true}));
 
+//CORS
+//CORS middleware
+app.use(function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', 'http://localhost:8101');
+    res.header('Access-Control-Allow-Credentials', true);
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+
+    next();
+});
+
 //DB USAGE
 app.use(expressSession({
     secret: "HYYa<qv\\v?faJ8Lr8vc\\",//Change this to enviroment variable later

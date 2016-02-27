@@ -1,5 +1,6 @@
 var express = require("express"),
-    usersRouter = express.Router({mergeParams:true});
+    usersRouter = express.Router({mergeParams:true}),
+    Middleware = require("../middleware");
     
     
   
@@ -16,7 +17,7 @@ usersRouter.get('/',function(req,res){
 
 
 //GET a specific user
-usersRouter.get('/:id_user',function(req, res) {
+usersRouter.get('/:id_user',Middleware.isLoggedIn,Middleware.isMe,function(req, res) {
     
     res.json({
         id_user:req.params.id_user,
