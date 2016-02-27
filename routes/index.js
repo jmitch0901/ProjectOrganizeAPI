@@ -23,19 +23,15 @@ apiRouter.get('/',function(req,res){
 });
 
 apiRouter.get('/me',Middleware.isLoggedIn,function(req,res){
-    
-    // res.json({
-    //     id_user:req.user._id,
-    //     name:'Jonathan Mitchell',
-    //     email:'jmitch0901@gmail.com',
-    //     message: 'You should show all my jobs here, or at least a list of id_jobs.'
-    // });
-    
     res.redirect('/api/users/'+req.user._id);
-    
 });
 
-apiRouter.post('/login',passport.authenticate('local',{failureRedirect:'/api/failure'}),function(req,res){
+
+apiRouter.get('/me/:me_extras',Middleware.isLoggedIn,function(req,res){
+    res.redirect('/api/users/'+req.user._id+'/'+req.params.me_extras);
+});
+
+apiRouter.post('/login',Middleware.notAlreadyLoggedIn,passport.authenticate('local',{failureRedirect:'/api/failure'}),function(req,res){
     res.send({message:"You are successfully logged in. You can see your profile by making a /me request."});
 });
 

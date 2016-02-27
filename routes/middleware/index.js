@@ -9,6 +9,15 @@ var Middleware = {
         res.status(401);
         res.json({error: "You are not authenticated. Please login first!"});
     },
+    notAlreadyLoggedIn: function(req,res,next){
+        if(!req.isAuthenticated()){
+            return next();
+        }
+        
+        res.status(403);
+        res.json({error: "You must logout before logging in again!"});
+        
+    },
     isMe: function(req,res,next){
         if(req.user._id.toString() == req.params.id_user){
             return next();

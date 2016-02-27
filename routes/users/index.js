@@ -1,5 +1,6 @@
 var express = require("express"),
     usersRouter = express.Router({mergeParams:true}),
+    usersRoutes = require("./users-routes"),
     Middleware = require("../middleware");
     
     
@@ -17,16 +18,17 @@ usersRouter.get('/',function(req,res){
 
 
 //GET a specific user
-usersRouter.get('/:id_user',Middleware.isLoggedIn,Middleware.isMe,function(req, res) {
+usersRouter.use('/:id_user',usersRoutes);
+// usersRouter.get('/:id_user',Middleware.isLoggedIn,Middleware.isMe,function(req, res) {
     
-    res.json({
-        id_user:req.params.id_user,
-        name:'Jonathan Mitchell',
-        email:'jmitch0901@gmail.com',
-        message: 'You should show all my jobs here, or at least a list of id_jobs.'
-    });
+//     res.json({
+//         id_user:req.params.id_user,
+//         name:'Jonathan Mitchell',
+//         email:'jmitch0901@gmail.com',
+//         message: 'You should show all my jobs here, or at least a list of id_jobs.'
+//     });
     
-});
+// });
 
 //PUT (edit) a specific user
 // usersRouter.put('/:id_user',function(req,res){

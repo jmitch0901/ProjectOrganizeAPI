@@ -10,10 +10,14 @@ companiesRouter.get('/',function(req,res){
             address: "1234 Main St."
         },
         {
-            
+            id_company:5,
+            name:"ffasd f da",
+            address: "1234 Main St." 
         },
         {
-            
+            id_company:6,
+            name:"hrg hr ",
+            address: "1234 Main St." 
         }
         
         ]);
