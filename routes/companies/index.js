@@ -1,26 +1,19 @@
 var express = require("express"),
-    companiesRouter = express.Router({mergeParams:true});
+    companiesRouter = express.Router({mergeParams:true}),
+    middleware = require("../middleware");
     
-//SHOW ALL companies
-companiesRouter.get('/',function(req,res){
-    res.json([
-        {
-            id_company:4,
-            name:"Star Books",
-            address: "1234 Main St."
-        },
-        {
-            id_company:5,
-            name:"ffasd f da",
-            address: "1234 Main St." 
-        },
-        {
-            id_company:6,
-            name:"hrg hr ",
-            address: "1234 Main St." 
-        }
-        
-        ]);
+//MODELS
+var Contact = require("../../models/contact"),
+    Company = require("../../models/company"),
+    Job = require("../../models/job");
+    
+
+
+
+companiesRouter.get('/search',function(req,res){
+    //Grab the query parameters
+    //Display the options for the user
+   res.json({message:"Server should search apis here..."}); 
 });
     
     

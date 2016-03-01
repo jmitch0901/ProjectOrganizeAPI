@@ -11,9 +11,12 @@ var jobSchema = mongoose.Schema({
         id:{
             type:mongoose.Schema.Types.ObjectId,
             ref:"company" 
-        }
+        },
+        name:String
     },
-    description:String
+    title:String,
+    location:String,
+    status:String
 });
 
 module.exports = mongoose.model("job",jobSchema);

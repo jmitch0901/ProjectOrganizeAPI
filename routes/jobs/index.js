@@ -1,29 +1,14 @@
 var express = require("express"),
-    jobsRouter = express.Router({mergeParams:true});
+    jobsRouter = express.Router({mergeParams:true}),
+    middleware = require("../middleware");
     
-    
-//GET all jobs
-jobsRouter.get('/',function(req,res){
-   res.json([
-       {
-           id_job:1,
-           fk_id_company:3,
-           title:"gyno"
-       },
-       {
-           id_job:2,
-           fk_id_company:3,
-           title:"bacinator"
-           
-       },
-       {
-           id_job:3,
-           fk_id_company:3,
-           title:"playa"
-       }
-       ]); 
-});
 
+
+jobsRouter.get('/search',function(req,res){
+    //Grab the query parameters
+    //Display the options for the user
+   res.json({message:"Server should search apis here..."}); 
+});
 
 //Get a SPECIFIC job. Add a query parameter SHOWALL?
 jobsRouter.get("/:id_job",function(req,res){
